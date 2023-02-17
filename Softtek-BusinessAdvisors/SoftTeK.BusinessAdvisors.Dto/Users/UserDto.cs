@@ -1,8 +1,6 @@
-﻿using System.Text.Json.Serialization;
-
-namespace SoftTeK.BusinessAdvisors.Data.Entities
+﻿namespace SoftTeK.BusinessAdvisors.Dto.Users
 {
-    public class User
+    public class UserDto
     {
         public int Id { get; set; }
         public string? Title { get; set; }
@@ -10,8 +8,5 @@ namespace SoftTeK.BusinessAdvisors.Data.Entities
         public string? LastName { get; set; }
         public string? Email { get; set; }
         public string? Password { get; set; }
-
-        [JsonIgnore]
-        public string? PasswordHash { get; set; }
     }
 }
