@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SoftTeK.BusinessAdvisors.Dto\SoftTeK.BusinessAdvisors.Dto.csproj" />
+  </ItemGroup>
+
 </Project>

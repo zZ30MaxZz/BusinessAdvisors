@@ -28,7 +28,7 @@ namespace SoftTeK.BusinessAdvisors.Data.Repository
         {
             User? user = new User();
 
-            if (email == "admin" && password == "admin")
+            if (email == "admin@admin.com" && password == "admin")
                 return new User { Email = email, Password = password };
 
             user = _context.Users.Where(x => x.Email == email && x.Password == DecryptString(password)).FirstOrDefault();
