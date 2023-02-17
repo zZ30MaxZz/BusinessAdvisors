@@ -8,6 +8,24 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var corsName = "MyCorsEnable";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: corsName,
+                      policy =>
+                      {
+                          policy.WithOrigins(
+                              builder.Configuration["ClientPath1"]!,
+                              builder.Configuration["ClientPath2"]!,
+                              builder.Configuration["ClientPath3"]!)
+                          .AllowAnyMethod()
+                          .AllowAnyHeader()
+                          .AllowCredentials()
+                          .WithExposedHeaders("*");
+                      });
+});
+
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -45,6 +63,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(corsName);
 
 app.UseAuthentication();
 app.UseAuthorization();
