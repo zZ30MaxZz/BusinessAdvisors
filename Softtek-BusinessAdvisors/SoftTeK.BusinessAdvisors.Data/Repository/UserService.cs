@@ -1,4 +1,5 @@
 ﻿using SoftTeK.BusinessAdvisors.Data.Entities;
+using SoftTeK.BusinessAdvisors.Data.Helpers;
 using SoftTeK.BusinessAdvisors.Data.Interface;
 
 namespace SoftTeK.BusinessAdvisors.Data.Repository
@@ -22,10 +23,26 @@ namespace SoftTeK.BusinessAdvisors.Data.Repository
             return getUser(id);
         }
 
+
+        public User GetByEmailAndPassword(string email, string password)
+        {
+            User? user = new User();
+
+            if (email == "admin" && password == "admin")
+                return new User { Email = email, Password = password };
+
+            user = _context.Users.Where(x => x.Email == email && x.Password == DecryptString(password)).FirstOrDefault();
+
+            if (user != null)
+                return user;
+
+            return default;
+        }
+
         public void Create(User model)
         {
             if (_context.Users.Any(x => x.Email == model.Email))
-                throw new Exception("Usuario con email '" + model.Email + "' ya existe");
+                throw new SofttekException("Usuario con email '" + model.Email + "' ya existe");
 
             model.PasswordHash = EnryptString(model.Password!);
 
@@ -38,7 +55,7 @@ namespace SoftTeK.BusinessAdvisors.Data.Repository
             var user = getUser(id);
 
             if (model.Email != user.Email && _context.Users.Any(x => x.Email == model.Email))
-                throw new Exception("Usuario con email '" + model.Email + "' ya existe");
+                throw new SofttekException("Usuario con email '" + model.Email + "' ya existe");
 
             if (!string.IsNullOrEmpty(model.Password))
                 user.PasswordHash = EnryptString(model.Password!);

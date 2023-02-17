@@ -9,5 +9,6 @@ namespace SoftTeK.BusinessAdvisors.Data.Interface
         void Create(User user);
         void Update(int id, User user);
         void Delete(int id);
+        User GetByEmailAndPassword(string email, string password);
     }
 }
