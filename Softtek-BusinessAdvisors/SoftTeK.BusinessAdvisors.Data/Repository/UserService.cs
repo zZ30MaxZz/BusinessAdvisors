@@ -15,7 +15,10 @@ namespace SoftTeK.BusinessAdvisors.Data.Repository
 
         public IEnumerable<User> GetAll()
         {
-            return _context.Users;
+            var users = _context.Users;
+
+            users.AsParallel().ForAll(u => u.Password = EnryptString(u.Password));
+            return users;
         }
 
         public User GetById(int id)

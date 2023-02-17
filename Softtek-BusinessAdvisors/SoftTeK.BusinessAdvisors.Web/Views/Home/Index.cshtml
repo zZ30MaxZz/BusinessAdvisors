@@ -20,33 +20,72 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4">
-            <form action="home/login" method="post">
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" name="email" class="form-control" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-    </div>
-    @if (Model.Users != null)
-    {
-        <div class="row justify-content-center">
+        @if (Model.Users is null)
+        {
             <div class="col-4">
-                <ul>
-                    @foreach (var item in Model.Users)
-                    {
-                        <li>@item.Email</li>
-                    }
-                </ul>
+                <form action="home/login" method="post">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" name="email" class="form-control" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                </form>
             </div>
-        </div>
-    }
+        }
+        @if (Model.Users != null)
+        {
+            <div class="col-4">
+                <form action="home/CreateUser" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Nombres</label>
+                        <input type="text" name="firstName" class="form-control" aria-describedby="firstName">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Apellidos</label>
+                        <input type="text" name="lastName" class="form-control" aria-describedby="lastName">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Título</label>
+                        <input type="text" name="title" class="form-control" aria-describedby="title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" name="email" class="form-control" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-info">Crear</button>
+                </form>
+            </div>
+        }
+        @if (Model.Users != null && Model.Users.Count > 0)
+        {
+            <div class="col-4">
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        @foreach (var item in Model.Users)
+                        {
+                            <div class="card mt-2" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">@item.FirstName @item.LastName</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">@item.Title</h6>
+                                    <p class="card-text">@item.Email @item.Password</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+
     @if (Model.User != null)
     {
         <div class="row justify-content-center mt-2">
