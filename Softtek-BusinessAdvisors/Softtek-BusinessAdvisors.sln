@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftTeK.BusinessAdvisors.Dt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftTeK.BusinessAdvisors.Data", "SoftTeK.BusinessAdvisors.Data\SoftTeK.BusinessAdvisors.Data.csproj", "{DA130AAA-E823-4B75-B132-0A9F40B90DEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftTeK.BusinessAdvisors.Web", "SoftTeK.BusinessAdvisors.Web\SoftTeK.BusinessAdvisors.Web.csproj", "{C5D29E8A-996E-44DD-B793-8E889A5A3A00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftTeK.BusinessAdvisors.Web", "SoftTeK.BusinessAdvisors.Web\SoftTeK.BusinessAdvisors.Web.csproj", "{C5D29E8A-996E-44DD-B793-8E889A5A3A00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

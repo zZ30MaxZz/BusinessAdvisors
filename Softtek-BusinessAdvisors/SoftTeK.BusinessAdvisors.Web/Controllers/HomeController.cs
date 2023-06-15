@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Net.Http;
 using System.Text.Json;
+using Microsoft.AspNetCore.Http;
 
 namespace SoftTeK.BusinessAdvisors.Web.Controllers
 {
@@ -63,6 +64,16 @@ namespace SoftTeK.BusinessAdvisors.Web.Controllers
 
                 return RedirectToAction("Index", "Home", indexModel);
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            ISession _session = HttpContext.Session;
+
+            _session.Clear();
+
+            return RedirectToAction("Index", "Home", null);
         }
 
         [HttpPost]

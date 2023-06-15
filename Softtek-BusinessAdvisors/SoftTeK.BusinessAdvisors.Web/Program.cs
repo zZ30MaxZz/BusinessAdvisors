@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IRepository, Repository>();
 builder.Services.AddSingleton(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration["ApiSofftek"]!) });
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddSession(options =>
 {
